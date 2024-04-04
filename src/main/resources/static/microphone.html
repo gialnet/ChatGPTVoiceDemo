@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microphone Toggle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body  class="bg-gray-100 py-16 h-screen">
+
+<div class="columns-1 flex flex-col space-y-5">
+
+        <div class="bg-gray-100 flex items-center justify-center">
+            <button id="toggleMic" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                Start Microphone
+            </button>
+        </div>
+
+        <div class="bg-gray-100 flex items-center justify-center">
+            <textarea id="message_id" rows="5" cols="90"></textarea><br>
+        </div>
+
+    <div class="bg-gray-100 flex items-center justify-center">
+        <button id="sendText" class="px-4 py-2 bg-green-400 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+            ? Send petition
+        </button>
+    </div>
+
+</div>
+
+
+<script src="app.js"></script>
+<script>
+
+    const eventSource = new EventSource("/sse");
+
+    eventSource.onmessage =  (event) => {
+        //alert(event.data);
+        //const notification = JSON.parse(event.data);
+        // display data
+        const messageTextarea = document.getElementById("message_id");
+        messageTextarea.value=event.data;
+
+    };
+
+    // close the connection to the server
+    window.addEventListener("beforeunload", () => {
+        eventSource.close();
+        /*
+        fetch('/focus-lost', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                // Handle the server response if needed
+            })
+            .catch(error => {
+                console.error('Error sending focus lost notification:', error);
+            });*/
+    });
+
+</script>
+</body>
+</html>
