@@ -14,7 +14,6 @@ import vivaldispring.eu.chatgptvoicedemo.services.SseService;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -23,7 +22,6 @@ import java.nio.file.Paths;
 @RequestMapping("/api")
 public class FileUploadController {
 
-    private final Path rootLocation = Paths.get("/home/antonio/IdeaProjects/OpenAI-API-vivaldi/uploads/");
     private final AudioToTextImp audioToTextImp;
     private final SseService sseService;
 
@@ -32,11 +30,16 @@ public class FileUploadController {
         this.sseService = sseService;
     }
 
+    /**
+     * Read a file audio sent from HTML document to send OpenAI API
+     * @param file must be webm audio file format
+     * @return the response
+     */
     @PostMapping(value = "/upload2")
     public ResponseEntity<?> uploadAudioStream(@RequestParam("file") MultipartFile file) {
 
         if (file.isEmpty()) {
-            log.info("Server info '{}'", "fichero vacio");
+            log.info("Server info '{}'", "empty file");
             return ResponseEntity.badRequest().body("No file uploaded.");
         }
 

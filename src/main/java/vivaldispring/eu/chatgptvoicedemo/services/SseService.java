@@ -18,7 +18,10 @@ public class SseService {
         emitter.onTimeout(() -> emitters.remove(emitter));
     }
 
-    //@Scheduled(fixedRate = 1000)
+    /**
+     * Send a text to HTML
+     * @param message text to send
+     */
     public void sendEvents(String message) {
         for (SseEmitter emitter : emitters) {
             try {

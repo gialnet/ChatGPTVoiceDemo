@@ -25,8 +25,8 @@ public class AudioToTextImp implements AudioToText{
 
 
     /**
-     *
-     * @return
+     * Read an audio file from memory
+     * @return object with the audio transcription
      */
     @Override
     public TranscriptText ApacheTranscriberInMemory(InputStream AudioFile){
