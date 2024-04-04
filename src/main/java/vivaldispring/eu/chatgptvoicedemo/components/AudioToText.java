@@ -1,5 +1,9 @@
 package vivaldispring.eu.chatgptvoicedemo.components;
 
+import vivaldispring.eu.chatgptvoicedemo.data.TranscriptText;
+
+import java.io.InputStream;
+
 /*
 curl https://api.openai.com/v1/audio/transcriptions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -9,6 +13,6 @@ curl https://api.openai.com/v1/audio/transcriptions \
  */
 public interface AudioToText {
 
-    String transcribeAudio(String audioFile);
+    TranscriptText ApacheTranscriberInMemory(InputStream AudioFile);
 
 }

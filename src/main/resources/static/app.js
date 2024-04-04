@@ -15,28 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isRecording) {
             navigator.mediaDevices.getUserMedia({ audio: true })
                 .then(stream => {
-                    /*
-                    const audioCtx = new AudioContext();
-                    const gainNode = audioCtx.createGain();
 
-                    // Set your desired gain level (between 0 - 1)
-                    gainNode.gain.setValueAtTime(0.9, audioCtx.currentTime); // Adjust 0.5 for volume
-
-                    const source = audioCtx.createMediaStreamSource(stream);
-                    source.connect(gainNode);
-                    gainNode.connect(audioCtx.destination);
-
-                    // Step 4: Create a MediaStream from the GainNode
-                    // Note: Not all browsers allow directly creating a MediaStream from a GainNode, so we create a new MediaStream using the GainNode's stream.
-                    const outputStream = audioCtx.createMediaStreamDestination();
-                    gainNode.connect(outputStream);
-
-                     */
-
-
-                    // mediaRecorder = new MediaRecorder(outputStream.stream);
-                    mediaRecorder = new MediaRecorder(stream);
-                    mediaRecorder.start();
                     audioChunks = [];
 
                     mediaRecorder.addEventListener('dataavailable', event => {

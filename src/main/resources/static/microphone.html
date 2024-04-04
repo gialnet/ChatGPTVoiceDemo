@@ -35,9 +35,8 @@
     const eventSource = new EventSource("/sse");
 
     eventSource.onmessage =  (event) => {
-        //alert(event.data);
-        //const notification = JSON.parse(event.data);
-        // display data
+
+        // fill text with data transcription
         const messageTextarea = document.getElementById("message_id");
         messageTextarea.value=event.data;
 
@@ -46,19 +45,6 @@
     // close the connection to the server
     window.addEventListener("beforeunload", () => {
         eventSource.close();
-        /*
-        fetch('/focus-lost', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => {
-                // Handle the server response if needed
-            })
-            .catch(error => {
-                console.error('Error sending focus lost notification:', error);
-            });*/
     });
 
 </script>
