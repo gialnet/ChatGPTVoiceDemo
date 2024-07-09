@@ -9,22 +9,18 @@ document.addEventListener('DOMContentLoaded', function() {
     audioElement.controls = true;
 
     // Optionally, append the audio element to the body or a specific element in your page
-    // document.body.appendChild(audioElement);
+    document.body.appendChild(audioElement);
 
     toggleMicButton.addEventListener('click', function() {
         if (!isRecording) {
             navigator.mediaDevices.getUserMedia({ audio: true })
                 .then(stream => {
-
+                    mediaRecorder = new MediaRecorder(stream);
                     audioChunks = [];
 
                     mediaRecorder.addEventListener('dataavailable', event => {
                         audioChunks.push(event.data);
                     });
-
-                    toggleMicButton.textContent = 'Stop Microphone';
-                    toggleMicButton.classList.remove('bg-blue-500', 'hover:bg-blue-700');
-                    toggleMicButton.classList.add('bg-red-500', 'hover:bg-red-700');
 
                     mediaRecorder.addEventListener('stop', () => {
                         const audioBlob = new Blob(audioChunks, { 'type' : 'audio/mp3' });
@@ -47,8 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
                                 return response.json();
                             })
                             .then(data => console.log(data))
-                            //.catch(error => console.error("Error uploading the file:", error));
+                            .catch(error => console.error("Error uploading the file:", error));
                     });
+
+                    mediaRecorder.start();
+
+                    toggleMicButton.textContent = 'Stop Microphone';
+                    toggleMicButton.classList.remove('bg-blue-500', 'hover:bg-blue-700');
+                    toggleMicButton.classList.add('bg-red-500', 'hover:bg-red-700');
 
                     isRecording = true;
                 })
@@ -65,4 +67,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
