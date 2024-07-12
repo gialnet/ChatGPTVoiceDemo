@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microphone Toggle</title>
+    <title>Text voice converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body  class="bg-gray-100 py-16 h-screen">
+
+<!--
+it is necessary add
+    - translate option for voice and for text
+    - voice avatar (several types of voices)
+    - voice male female option
+-->
+
+<body  class="bg-gray-100 py-10 h-screen">
+
+<div class="relative  left-20 h-32 w-120">
+    <p class="text-3xl justify-center">Voice to Text and Text to Voice Converter</p>
+</div>
 
 <div class="columns-1 flex flex-col space-y-5">
 
@@ -20,10 +32,24 @@
             <textarea id="message_id" rows="5" cols="90"></textarea><br>
         </div>
 
-    <div class="bg-gray-100 flex items-center justify-center">
-        <button id="sendText" class="px-4 py-2 bg-green-400 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-            ? Send petition
+    <div class="bg-gray-100 flex flex-row items-center gap-x-10 justify-center">
+        <button id="clearText" class="px-4 py-2 bg-red-400 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+            Clear text content
         </button>
+
+    </div>
+
+    <div class="bg-gray-100 flex flex-row items-center gap-x-10 justify-center">
+        <button id="sendText" class="px-4 py-2 bg-green-400 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+            convert Text to Voice
+        </button>
+        <input type="checkbox" id="btn-hombre" class="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
+            value="Onyx">
+        <label for="btn-hombre">Onyx voz masculina</label><br>
+        <input type="checkbox" id="btn-mujer" class="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
+               value="Shimmer">
+        <label for="btn-mujer">Shimmer voz femenina</label><br>
+
     </div>
 
 </div>

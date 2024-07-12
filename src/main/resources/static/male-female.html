@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Género</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+
+<div class="space-x-4">
+    <button id="btn-hombre" class="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">
+        Onyx voz masculina
+    </button>
+    <button id="btn-mujer" class="px-4 py-2 font-semibold text-white bg-pink-500 rounded-lg hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-75">
+        Shimmer voz femenina
+    </button>
+</div>
+
+<script>
+    document.getElementById('btn-hombre').addEventListener('click', function() {
+        alert('Seleccionaste Hombre');
+    });
+
+    document.getElementById('btn-mujer').addEventListener('click', function() {
+        alert('Seleccionaste Mujer');
+    });
+</script>
+</body>
+</html>
