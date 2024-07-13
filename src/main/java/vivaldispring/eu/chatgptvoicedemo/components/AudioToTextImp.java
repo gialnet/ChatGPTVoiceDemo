@@ -16,6 +16,14 @@ import vivaldispring.eu.chatgptvoicedemo.data.TranscriptText;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Antonio Perez
+ * July 2024
+ *
+ * Send an audio file and got a text with the audio transcription.
+ *
+ */
+
 @Component
 public class AudioToTextImp implements AudioToText{
 

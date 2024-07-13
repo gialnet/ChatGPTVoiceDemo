@@ -43,12 +43,12 @@ it is necessary add
         <button id="sendText" class="px-4 py-2 bg-green-400 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
             convert Text to Voice
         </button>
-        <input type="checkbox" id="btn-hombre" class="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
-            value="Onyx">
-        <label for="btn-hombre">Onyx voz masculina</label><br>
-        <input type="checkbox" id="btn-mujer" class="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
-               value="Shimmer">
-        <label for="btn-mujer">Shimmer voz femenina</label><br>
+        <input type="checkbox" checked="true" id="chk-hombre" class="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
+            value="Onyx" onchange="toggleCHK()">
+        <label for="chk-hombre">Onyx voz masculina</label><br>
+        <input type="checkbox" id="chk-mujer" class="px-4 py-2 font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
+               value="Shimmer" onchange="toggleCHK2()">
+        <label for="chk-mujer">Shimmer voz femenina</label><br>
 
     </div>
 
@@ -72,6 +72,30 @@ it is necessary add
     window.addEventListener("beforeunload", () => {
         eventSource.close();
     });
+
+</script>
+<script>
+    function toggleCHK(){
+
+        //console.log(chk_element.name);
+
+        if (document.getElementById("chk-hombre").checked)
+            document.getElementById("chk-mujer").checked=false;
+        else
+            document.getElementById("chk-mujer").checked=true;
+
+    }
+
+    function toggleCHK2(){
+
+        //console.log(chk_element.name);
+
+        if (document.getElementById("chk-mujer").checked)
+            document.getElementById("chk-hombre").checked=false;
+        else
+            document.getElementById("chk-hombre").checked=true;
+
+    }
 
 </script>
 </body>
