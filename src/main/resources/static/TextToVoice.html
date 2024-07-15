@@ -18,10 +18,12 @@ it is necessary add
 <body  class="bg-gray-100 py-5 h-screen">
 
 
-    <p class="text-3xl">Voice to Text and Text to Voice Converter</p>
 
+<div class="bg-gray-100 flex items-center justify-center">
+    <p class="text-3xl">Text to Voice Converter</p>
+</div>
 
-<div class="columns-1 flex flex-col space-y-5">
+<div class="columns-1 flex flex-col space-y-3">
 
     <div class="container mx-auto md:flex md:justify-center mb-6 pt-8">
         <div class="w-full max-w-xl">
@@ -35,25 +37,20 @@ it is necessary add
                     </span>
                         <input id="queryString" th:field="*{queryString}" class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="File name to save..." type="text" name="queryString"/>
                     </label>
-
+                </div>
+                <div id="object_play">
+                    <audio id="audio_player" controls="true"></audio>
                 </div>
             </form>
         </div>
     </div>
-
-
-        <div class="bg-gray-100 flex items-center justify-center">
-            <button id="toggleMic" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-                Start Microphone
-            </button>
-        </div>
 
         <div class="bg-gray-100 flex items-center justify-center">
             <textarea id="message_id" rows="5" cols="90"></textarea><br>
         </div>
 
     <div class="bg-gray-100 flex flex-row items-center gap-x-10 justify-center">
-        <button id="clearText" class="px-4 py-2 bg-red-400 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+        <button onclick="ClearTextArea()" id="clearText" class="px-4 py-2 bg-red-400 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
             Clear text content
         </button>
 
@@ -75,11 +72,6 @@ it is necessary add
     </div>
 
 
-    <!-- This is an example component -->
-    <div class="max-w-2xl mx-auto">
-
-        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="file_input">Upload file</label>
-        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
 
     </div>
 
@@ -105,6 +97,12 @@ it is necessary add
     });
 
 </script>
+    <script>
+        function ClearTextArea(){
+            const messageTextarea = document.getElementById("message_id");
+            messageTextarea.value="";
+        }
+    </script>
 <script>
     function toggleCHK(){
 

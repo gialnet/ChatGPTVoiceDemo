@@ -5,11 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const toggleMicButton = document.getElementById('toggleMic');
     // Create an audio element for playback
-    let audioElement = document.createElement('audio');
-    audioElement.controls = true;
+    let audioElement = document.getElementById('audio_player');
+    // audioElement.controls = true;
 
     // Optionally, append the audio element to the body or a specific element in your page
-    document.body.appendChild(audioElement);
+    // const targetDiv = document.getElementById('object_play');
+    // targetDiv.appendChild(audioElement);
+    // document.body.appendChild(audioElement);
 
     toggleMicButton.addEventListener('click', function() {
         if (!isRecording) {
@@ -29,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         const audioUrl = URL.createObjectURL(audioBlob);
 
                         // Set the src of the audioElement to the audioUrl and play it
-                        audioElement.src = audioUrl;
-                        audioElement.play();
+                        // audioElement.src = audioUrl;
+                        // audioElement.play();
 
                         fetch('http://localhost:8080/api/upload2', {
                             method: 'POST',
